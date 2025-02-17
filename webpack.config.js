@@ -2,12 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: argv.mode === 'production' ? './' : '/',
   },
   module: {
     rules: [
@@ -50,4 +50,4 @@ module.exports = {
     port: 3000,
     historyApiFallback: true,
   },
-};
+});
