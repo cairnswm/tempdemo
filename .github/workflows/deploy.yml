@@ -16,6 +16,9 @@ jobs:
         run: npm ci -force
         
       - name: Build Site
+        env:
+          ENVIRONMENT: production
+          NODE_ENV: production
         run: npm run build
 
       - name: Deploy Site
